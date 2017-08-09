@@ -12,11 +12,11 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "minimal/trusty64"
+  config.vm.box = "mrgcastle/ubuntu-lucid32"
 
   # Set the name of the host
   config.vm.define :web do |web_config|
-    web_config.vm.hostname = "butterfly0"
+    web_config.vm.hostname = "lucid0"
   end  
   # Disable automatic box update checking
   config.vm.box_check_update = false
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options
-  config.vm.synced_folder "~/2017", "/home/butterfly/data"
+  config.vm.synced_folder "~/2017", "/home/lucid/data"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
       # Customize the amount of memory on the VM:
       vb.cpus = 1
       vb.memory = "1024"
-      vb.name = "butterfly_v0"
+      vb.name = "lucid0"
   end
   #
   # View the documentation for the provider you are using for more
@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
       echo $(whoami)
       pkill -u vagrant
-      usermod vagrant -l butterfly -d /home/butterfly
-      echo "butterfly:butterfly" | sudo chpasswd
+      usermod vagrant -l lucid -d /home/lucid
+      echo "lucid:lucid" | sudo chpasswd
   SHELL
 end
